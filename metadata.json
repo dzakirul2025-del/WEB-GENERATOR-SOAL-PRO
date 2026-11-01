@@ -1,0 +1,6 @@
+{
+  "name": "MADRASAH ASSESSMENT PRO – MIN 1 PASER",
+  "description": "Smart Assessment Generator, Examination, Analytics & Digital Gradebook System untuk MIN 1 Paser.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

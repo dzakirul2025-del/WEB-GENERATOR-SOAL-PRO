@@ -1,0 +1,1504 @@
+# MASTER PROMPT PEMBANGUNAN APLIKASI
+# MADRASAH ASSESSMENT PRO – MIN 1 PASER
+## FINAL MASTER BUILD PROMPT – PROFESSIONAL EDITION
+
+---
+
+# BAGIAN 1. IDENTITAS DAN MANDAT PEMBANGUNAN
+
+Bertindaklah sebagai tim pengembang perangkat lunak profesional yang memiliki keahlian sebagai:
+
+1. Senior Full-Stack Developer.
+2. Software Architect.
+3. Database Engineer PostgreSQL dan Supabase.
+4. UI/UX Designer.
+5. AI Engineer dan Gemini API Specialist.
+6. Ahli asesmen dan evaluasi pendidikan.
+7. Ahli Kurikulum Merdeka jenjang Madrasah Ibtidaiyah.
+8. Data Analyst dan Assessment Statistician.
+9. Security Engineer.
+10. Quality Assurance Engineer.
+
+Tugas Anda adalah MEMBANGUN APLIKASI WEB PROFESIONAL, LENGKAP, TERINTEGRASI, DAN SIAP DIGUNAKAN untuk mengelola seluruh kegiatan asesmen di MIN 1 Paser.
+
+Nama aplikasi:
+
+MADRASAH ASSESSMENT PRO
+
+Identitas:
+- Nama madrasah: MIN 1 PASER.
+- Kepala Madrasah: Ismail, S.Ag.
+- Pengembang: Dzakirul Husni, S.Pd.
+- Tagline: Smart Assessment Generator, Examination, Analytics & Digital Gradebook System.
+
+Target aplikasi:
+Khusus MIN 1 Paser.
+
+Tujuan utama:
+
+Membangun satu platform terpadu yang mampu mengelola seluruh proses asesmen, mulai dari pengelolaan kurikulum, pembuatan kisi-kisi, generator soal otomatis berbasis AI, kartu soal, rubrik penilaian, bank soal, pelaksanaan ujian, koreksi, analisis hasil, rekap nilai, sampai nilai otomatis tersimpan dalam buku nilai digital.
+
+APLIKASI INI BUKAN SEKADAR PROTOTYPE VISUAL.
+
+Seluruh modul harus mempunyai fungsi nyata, terhubung ke database, memiliki validasi, dan dapat diuji.
+
+Jangan membuat dashboard yang hanya menampilkan angka statis.
+
+Jangan membuat tombol yang tidak mempunyai fungsi.
+
+Jangan menggunakan data akademik fiktif.
+
+---
+
+# BAGIAN 2. TEKNOLOGI WAJIB
+
+Gunakan arsitektur berikut:
+
+FRONTEND:
+- Next.js App Router.
+- TypeScript.
+- Tailwind CSS.
+- shadcn/ui.
+- Lucide Icons.
+- React Hook Form.
+- Zod.
+
+BACKEND:
+- Next.js Route Handlers.
+- Server Actions.
+- Supabase PostgreSQL.
+- Supabase Auth.
+- Supabase Storage.
+- Supabase Row Level Security.
+- Database migrations.
+
+ARTIFICIAL INTELLIGENCE:
+- Gemini API.
+- Structured JSON Output.
+- Zod validation.
+- AI-assisted question generation.
+- AI-assisted explanation and essay scoring recommendations.
+
+INFRASTRUKTUR:
+- GitHub.
+- Vercel.
+- Supabase.
+
+Semua proses sensitif harus dijalankan melalui server.
+
+API KEY dan SERVICE ROLE KEY tidak boleh ditampilkan di browser atau disimpan di repository publik.
+
+Gunakan environment variables dan sediakan .env.example.
+
+---
+
+# BAGIAN 3. IDENTITAS VISUAL DAN UI/UX
+
+Buat desain profesional dengan karakter aplikasi pendidikan modern.
+
+Warna:
+- Hijau Kemenag sebagai warna utama.
+- Hijau tua untuk sidebar.
+- Putih sebagai dasar.
+- Abu-abu muda untuk area konten.
+- Biru untuk informasi.
+- Kuning untuk peringatan.
+- Merah untuk kesalahan.
+
+Tampilan harus memiliki:
+
+1. Halaman login profesional.
+2. Sidebar navigasi.
+3. Topbar.
+4. Dashboard statistik.
+5. Breadcrumb.
+6. Tabel data.
+7. Filter dan pencarian.
+8. Pagination.
+9. Modal konfirmasi.
+10. Formulir modern.
+11. Toast notification.
+12. Loading state.
+13. Empty state.
+14. Error state.
+15. Progress indicator.
+16. Grafik statistik.
+17. Responsif untuk desktop, tablet, dan HP.
+
+Gunakan identitas MIN 1 PASER pada halaman login, dashboard, dokumen, dan laporan.
+
+Sediakan upload:
+- Logo Kementerian Agama.
+- Logo MIN 1 Paser.
+- Kop surat madrasah.
+- Identitas kepala madrasah.
+
+Jangan membuat atau mengarang logo resmi.
+
+---
+
+# BAGIAN 4. LOGIN DAN HAK AKSES
+
+Gunakan Supabase Auth.
+
+Sediakan enam jenis pengguna.
+
+1. SUPER ADMIN
+   - Mengelola seluruh aplikasi.
+   - Mengelola akun.
+   - Mengatur hak akses.
+   - Mengelola seluruh master data.
+   - Mengatur konfigurasi.
+   - Melihat seluruh laporan.
+
+2. KEPALA MADRASAH
+   - Monitoring seluruh asesmen.
+   - Melihat rekap nilai.
+   - Melihat analisis pembelajaran.
+   - Memantau aktivitas guru.
+   - Memeriksa laporan.
+   - Melakukan pengesahan sesuai kewenangan.
+
+3. GURU MAPEL
+   - Membuat kisi-kisi.
+   - Membuat soal.
+   - Menggunakan AI Generator.
+   - Mengelola bank soal.
+   - Melaksanakan asesmen.
+   - Melakukan koreksi.
+   - Mengelola buku nilai mata pelajaran.
+
+4. WALI KELAS
+   - Melihat rekap nilai seluruh mapel kelasnya.
+   - Melihat perkembangan siswa.
+   - Melihat peserta didik belum tuntas.
+   - Mengunduh laporan kelas.
+
+5. OPERATOR
+   - Mengelola master data sesuai kewenangan.
+   - Mengimpor data guru dan siswa.
+   - Mengelola kelas.
+   - Mengelola akun pengguna.
+
+6. PESERTA DIDIK
+   - Login.
+   - Melihat jadwal asesmen.
+   - Mengerjakan soal.
+   - Mengirim jawaban.
+   - Melihat hasil jika telah dipublikasikan.
+
+Hak akses harus diperiksa melalui backend dan RLS, bukan hanya frontend.
+
+---
+
+# BAGIAN 5. MASTER DATA MADRASAH
+
+Buat modul master data yang terintegrasi.
+
+Data yang wajib dikelola:
+
+1. Identitas madrasah.
+2. Tahun pelajaran.
+3. Semester.
+4. Guru.
+5. Peserta didik.
+6. Kelas.
+7. Mata pelajaran.
+8. Wali kelas.
+9. Penugasan guru.
+10. Kurikulum.
+11. Fase.
+12. CP.
+13. TP.
+14. ATP.
+15. Bab.
+16. Materi pembelajaran.
+
+Fitur:
+- Tambah.
+- Edit.
+- Hapus atau nonaktifkan.
+- Pencarian.
+- Filter.
+- Impor Excel.
+- Ekspor Excel.
+- Validasi.
+- Deteksi duplikasi.
+- Preview impor.
+
+Buat template Excel untuk setiap master data.
+
+Setiap impor harus menampilkan:
+- Total data.
+- Berhasil.
+- Gagal.
+- Duplikat.
+- Kesalahan format.
+- Baris yang harus diperbaiki.
+
+JANGAN MEMASUKKAN DATA SISWA, GURU, KURIKULUM, DAN NILAI PALSU.
+
+Data awal harus berasal dari administrator atau file resmi yang diimpor.
+
+---
+
+# BAGIAN 6. MODUL KURIKULUM
+
+Buat modul pengelolaan kurikulum.
+
+Struktur:
+
+Kurikulum → Fase → Mata Pelajaran → Elemen → CP → TP → ATP → Bab → Materi → Indikator Soal.
+
+Dukung:
+- Fase A.
+- Fase B.
+- Fase C.
+- Kelas I sampai VI.
+- Kurikulum yang dikonfigurasi madrasah.
+
+Setiap CP, TP, ATP, dan materi harus dapat:
+- Ditambahkan.
+- Diedit.
+- Diarsipkan.
+- Diimpor.
+- Dihubungkan dengan asesmen.
+
+Data CP dan TP harus memiliki sumber atau dokumen referensi.
+
+Jangan mengarang data kurikulum.
+
+Jika belum tersedia, sediakan fasilitas input dan impor.
+
+Setiap soal harus mempunyai keterkaitan dengan TP dan indikator yang relevan.
+
+---
+
+# BAGIAN 7. LIMA JENIS ASESMEN
+
+Sediakan lima kategori asesmen:
+
+1. ASESMEN FORMATIF.
+2. SUMATIF AKHIR BAB.
+3. SUMATIF AKHIR SEMESTER.
+4. SUMATIF AKHIR TAHUN.
+5. UJIAN MADRASAH.
+
+Setiap asesmen mempunyai:
+- Nama asesmen.
+- Jenis asesmen.
+- Tahun pelajaran.
+- Semester.
+- Kelas.
+- Mata pelajaran.
+- Guru penyusun.
+- Tanggal pelaksanaan.
+- Materi.
+- CP.
+- TP.
+- Indikator.
+- Tujuan asesmen.
+- Alokasi waktu.
+- Jumlah soal.
+- Bobot soal.
+- Jumlah peserta.
+- Status asesmen.
+
+Status:
+- Draft.
+- Dalam Validasi.
+- Disetujui.
+- Published.
+- Sedang Berlangsung.
+- Selesai.
+- Dalam Koreksi.
+- Dinilai.
+- Disahkan.
+- Diarsipkan.
+
+Seluruh jenis asesmen menggunakan satu mesin generator dan sistem penilaian yang sama, tetapi konfigurasi dan kategorinya tetap dibedakan.
+
+---
+
+# BAGIAN 8. MODUL AI ASSESSMENT GENERATOR
+
+INI ADALAH FITUR UTAMA APLIKASI.
+
+Buat generator soal otomatis yang cerdas, lengkap, fleksibel, dan mendukung pembuatan soal dalam jumlah besar.
+
+## A. Formulir generator
+
+Guru mengisi:
+
+1. Jenis asesmen.
+2. Tahun pelajaran.
+3. Semester.
+4. Kelas.
+5. Fase.
+6. Mata pelajaran.
+7. Bab.
+8. Materi.
+9. CP.
+10. TP.
+11. Indikator soal.
+12. Tujuan asesmen.
+13. Sumber materi.
+
+Sumber materi dapat berasal dari:
+- Teks yang dimasukkan guru.
+- Dokumen PDF.
+- DOCX.
+- TXT.
+- Materi yang tersimpan di database.
+
+Jika sumber tidak tersedia, sistem meminta guru melengkapinya.
+
+## B. TIGA JENIS SOAL DALAM SATU GENERATE
+
+Sediakan tiga kotak pilihan (checkbox) yang dapat dicentang bersamaan.
+
+### 1. PILIHAN GANDA
+
+Pengaturan:
+- Jumlah soal bebas.
+- Default opsi A-D.
+- Jumlah opsi dapat dikonfigurasi.
+- Satu kunci jawaban benar.
+- Pembahasan.
+- Bobot soal.
+- Indikator.
+- TP.
+- Level kognitif.
+- Tingkat kesulitan.
+
+### 2. ISIAN SINGKAT
+
+Pengaturan:
+- Jumlah soal bebas.
+- Kunci jawaban.
+- Variasi jawaban benar.
+- Toleransi jawaban.
+- Pembahasan.
+- Bobot.
+- Indikator.
+- TP.
+- Level kognitif.
+
+### 3. ESSAY / URAIAN
+
+Pengaturan:
+- Jumlah soal bebas.
+- Pedoman jawaban.
+- Rubrik penilaian.
+- Kriteria penskoran.
+- Skor maksimum.
+- Pembahasan.
+- Indikator.
+- TP.
+- Level kognitif.
+
+Ketentuan utama:
+
+Ketiga jenis soal dapat dipilih bersamaan.
+
+Contoh:
+- Pilihan Ganda: 150 soal.
+- Isian: 100 soal.
+- Essay: 50 soal.
+- Total: 300 soal.
+
+Guru juga dapat meminta 500, 1.000, atau lebih soal sesuai kebutuhan.
+
+Tidak boleh menetapkan batas maksimum arbitrer sebesar 100 soal.
+
+Jika terdapat batas kuota, biaya, token, atau kapasitas API, tampilkan batas teknis secara transparan.
+
+Jenis soal yang tidak dicentang tidak boleh dibuat.
+
+## C. LEVEL KOGNITIF
+
+Sediakan:
+- C1 Mengingat.
+- C2 Memahami.
+- C3 Mengaplikasikan.
+- C4 Menganalisis.
+- C5 Mengevaluasi.
+- C6 Mencipta.
+
+Sediakan pengaturan distribusi:
+- LOTS.
+- MOTS.
+- HOTS.
+
+Guru dapat mengatur distribusi persentase.
+
+Total harus 100%.
+
+## D. TINGKAT KESULITAN
+
+Sediakan:
+- Mudah.
+- Sedang.
+- Sulit.
+
+Persentase dapat diatur oleh guru dan harus berjumlah 100%.
+
+## E. KARAKTER SOAL
+
+Sediakan pilihan:
+- Kontekstual.
+- HOTS.
+- Literasi.
+- Numerasi.
+- Berbasis gambar.
+- Berbasis tabel.
+- Berbasis grafik.
+- Berbasis teks stimulus.
+- Permasalahan kehidupan sehari-hari.
+
+## F. GENERATE SOAL
+
+Integrasikan Gemini API melalui server.
+
+AI wajib menerima seluruh konfigurasi generator.
+
+Output harus menggunakan structured JSON.
+
+Validasi dengan Zod.
+
+Setiap soal harus mempunyai:
+- Nomor soal.
+- Jenis soal.
+- Pertanyaan.
+- Stimulus.
+- Pilihan jawaban jika PG.
+- Kunci jawaban.
+- Pembahasan.
+- CP.
+- TP.
+- Indikator.
+- Level kognitif.
+- Tingkat kesulitan.
+- Bobot.
+- Referensi materi.
+
+Essay wajib memiliki rubrik penilaian dan pedoman jawaban.
+
+Jangan membuat soal di luar materi.
+
+Jangan mengarang fakta ilmiah, sejarah, informasi agama, atau data kurikulum.
+
+AI tidak boleh dinyatakan sebagai validator kebenaran mutlak. Hasil harus diperiksa dan disetujui guru.
+
+---
+
+# BAGIAN 9. ADVANCED BULK GENERATION ENGINE
+
+Buat sistem BULK QUESTION GENERATOR tanpa batas tetap 100 soal.
+
+Gunakan batch processing adaptif.
+
+Contoh:
+
+Permintaan:
+- 150 Pilihan Ganda.
+- 100 Isian.
+- 50 Essay.
+- Total 300 soal.
+
+Sistem dapat membagi menjadi:
+- 5 batch PG, masing-masing 30 soal.
+- 5 batch Isian, masing-masing 20 soal.
+- 5 batch Essay, masing-masing 10 soal.
+
+Jumlah per batch harus menyesuaikan:
+- Kapasitas token.
+- Panjang stimulus.
+- Kompleksitas soal.
+- Batas model.
+- Kapasitas API.
+
+Jangan mengirim ribuan soal dalam satu permintaan API.
+
+Buat background job dan worker yang dapat melanjutkan proses setelah gangguan.
+
+Gunakan Supabase Queues/pgmq atau mekanisme queue persisten yang setara.
+
+Setiap job memiliki:
+- Job ID.
+- User ID.
+- Assessment ID.
+- Jumlah soal yang diminta.
+- Jumlah soal berhasil.
+- Jumlah gagal.
+- Progress.
+- Status.
+- Waktu mulai.
+- Waktu selesai.
+
+Fitur:
+- Progress bar.
+- Pause jika didukung worker.
+- Resume.
+- Cancel.
+- Retry batch gagal.
+- Autosave.
+- Idempotency.
+- Error reporting.
+- Batch monitoring.
+
+Gunakan concurrency limit dan exponential backoff.
+
+Jangan mengulang batch berhasil.
+
+Sediakan estimasi penggunaan token, biaya jika tersedia, dan estimasi waktu.
+
+Status pekerjaan:
+- Queued.
+- Processing.
+- Partially Completed.
+- Completed.
+- Failed.
+- Cancelled.
+
+Jika target 300 soal, sistem hanya boleh menyatakan Completed apabila 300 soal valid telah berhasil dibuat.
+
+---
+
+# BAGIAN 10. VALIDASI SOAL DAN EDITOR
+
+Setelah generate, seluruh soal masuk ke editor.
+
+Fitur:
+- Edit pertanyaan.
+- Edit opsi.
+- Edit kunci.
+- Edit pembahasan.
+- Edit indikator.
+- Edit CP dan TP.
+- Edit bobot.
+- Edit tingkat kesulitan.
+- Edit level kognitif.
+- Edit rubrik.
+- Tambah soal manual.
+- Hapus soal.
+- Generate ulang soal tertentu.
+
+Validasi otomatis:
+
+1. Pertanyaan tidak kosong.
+2. Opsi pilihan ganda lengkap.
+3. Kunci pilihan ganda cocok dengan opsi.
+4. Isian mempunyai kunci.
+5. Essay mempunyai rubrik.
+6. Bobot valid.
+7. Nomor soal tidak ganda.
+8. Tidak ada soal identik.
+9. Tidak ada kesalahan struktur.
+10. Soal terhubung dengan TP.
+11. Distribusi soal sesuai permintaan.
+12. Jumlah akhir sesuai target.
+
+Gunakan deteksi duplikasi berbasis exact matching dan semantic similarity.
+
+Status:
+Draft → Validasi → Disetujui → Published.
+
+Soal belum boleh dipublikasikan sebelum disetujui guru.
+
+---
+
+# BAGIAN 11. GENERATOR KISI-KISI OTOMATIS
+
+Kisi-kisi merupakan bagian wajib setiap asesmen.
+
+Sistem harus membuat kisi-kisi berdasarkan soal dan indikator yang telah ditentukan.
+
+Kolom kisi-kisi:
+
+1. Nomor.
+2. Jenis asesmen.
+3. Mata pelajaran.
+4. Kelas.
+5. Materi.
+6. CP.
+7. TP.
+8. Indikator soal.
+9. Level kognitif.
+10. Tingkat kesulitan.
+11. Jenis soal.
+12. Nomor soal.
+13. Bobot.
+
+Kisi-kisi harus terhubung langsung dengan database soal.
+
+Jika soal diubah, kisi-kisi harus ikut diperbarui setelah guru menyetujui perubahan.
+
+Sediakan:
+- Preview.
+- Edit.
+- Cetak.
+- Ekspor PDF.
+- Ekspor DOCX.
+- Ekspor Excel.
+
+---
+
+# BAGIAN 12. GENERATOR KARTU SOAL
+
+Buat kartu soal otomatis untuk setiap butir soal.
+
+Isi kartu soal:
+
+1. Identitas madrasah.
+2. Jenis asesmen.
+3. Mata pelajaran.
+4. Kelas.
+5. Semester.
+6. Nama guru penyusun.
+7. CP.
+8. TP.
+9. Materi.
+10. Indikator.
+11. Level kognitif.
+12. Tingkat kesulitan.
+13. Jenis soal.
+14. Rumusan soal.
+15. Kunci jawaban.
+16. Pembahasan.
+17. Pedoman penskoran.
+18. Rubrik untuk essay.
+
+Setiap soal memiliki kartu masing-masing.
+
+Sediakan cetak massal dan cetak satuan.
+
+---
+
+# BAGIAN 13. GENERATOR RUBRIK PENILAIAN
+
+Buat rubrik otomatis untuk soal essay.
+
+Setiap rubrik harus memuat:
+- Aspek yang dinilai.
+- Kriteria jawaban.
+- Tingkat pencapaian.
+- Skor maksimum.
+- Skor minimum.
+- Deskripsi setiap level.
+- Pedoman penskoran.
+
+Sistem harus mendukung:
+- Rubrik analitik.
+- Rubrik holistik.
+- Skor parsial.
+- Penilaian bertingkat.
+
+Guru dapat mengedit rubrik.
+
+AI boleh membantu memberikan rekomendasi penilaian essay, tetapi skor akhir tetap disetujui guru.
+
+Rubrik harus terhubung dengan modul koreksi dan buku nilai.
+
+---
+
+# BAGIAN 14. NASKAH SOAL SIAP CETAK
+
+Buat modul pembuatan naskah soal.
+
+Fitur:
+- Kop MIN 1 Paser.
+- Logo resmi.
+- Identitas asesmen.
+- Identitas siswa.
+- Petunjuk pengerjaan.
+- Nomor otomatis.
+- Opsi A-D.
+- Penataan soal.
+- Penomoran halaman.
+- Kertas A4.
+- Pengaturan margin.
+- Satu kolom atau dua kolom.
+- Pengaturan font.
+- Kunci jawaban terpisah.
+- Pembahasan terpisah.
+
+Ekspor:
+- PDF.
+- DOCX.
+
+Pastikan dokumen rapi dan siap dicetak.
+
+---
+
+# BAGIAN 15. BANK SOAL DIGITAL
+
+Simpan seluruh soal yang telah disetujui dalam bank soal.
+
+Filter:
+- Tahun pelajaran.
+- Mata pelajaran.
+- Kelas.
+- Fase.
+- Bab.
+- Materi.
+- CP.
+- TP.
+- Jenis soal.
+- Level kognitif.
+- Tingkat kesulitan.
+- Status.
+
+Fitur:
+- Pencarian.
+- Edit.
+- Duplikasi sebagai versi baru.
+- Arsip.
+- Impor.
+- Ekspor.
+- Tambahkan ke asesmen.
+- Generate dari bank soal.
+
+Soal yang pernah digunakan harus memiliki riwayat penggunaan.
+
+Jangan mengubah versi soal historis yang telah digunakan dalam ujian.
+
+---
+
+# BAGIAN 16. PELAKSANAAN ASESMEN / CBT
+
+Buat sistem ujian berbasis komputer.
+
+Fitur:
+- Jadwal.
+- Token.
+- Durasi.
+- Pengacakan soal.
+- Pengacakan opsi.
+- Timer.
+- Autosave server.
+- Navigasi soal.
+- Status jawaban.
+- Submit.
+- Pengumpulan otomatis saat waktu habis.
+- Monitoring peserta.
+- Riwayat pengerjaan.
+- Pemulihan sesi jika koneksi terputus.
+
+Kunci jawaban tidak boleh dikirim ke browser peserta didik.
+
+Jangan hanya menggunakan local storage.
+
+Gunakan penyimpanan server, transaksi, dan idempotensi.
+
+Catat peristiwa ujian secara proporsional. Perpindahan tab tidak otomatis dianggap sebagai bukti kecurangan.
+
+---
+
+# BAGIAN 17. MODUL KOREKSI DAN PENSKORAN
+
+Pilihan Ganda:
+- Koreksi otomatis.
+- Cocokkan dengan kunci.
+- Hitung skor berdasarkan bobot.
+
+Isian:
+- Koreksi berdasarkan kunci.
+- Variasi jawaban.
+- Normalisasi huruf dan spasi.
+- Toleransi jawaban.
+- Pemeriksaan manual untuk jawaban ambigu.
+
+Essay:
+- Penilaian dengan rubrik.
+- Skor parsial.
+- Koreksi guru.
+- AI memberikan rekomendasi skor.
+- Guru menyetujui nilai akhir.
+
+Rumus nilai dapat dikonfigurasi.
+
+Konversi nilai ke skala 0-100.
+
+Jangan menetapkan bobot secara sepihak.
+
+Semua perhitungan harus dapat ditelusuri.
+
+---
+
+# BAGIAN 18. ANALISIS HASIL ASESMEN
+
+Ini adalah fitur utama kedua setelah generator.
+
+Setelah asesmen selesai, sistem otomatis membuat analisis berdasarkan data respons aktual.
+
+## A. ANALISIS HASIL KELAS
+
+Tampilkan:
+- Nilai tertinggi.
+- Nilai terendah.
+- Rata-rata.
+- Median.
+- Distribusi nilai.
+- Jumlah siswa tuntas.
+- Jumlah siswa belum tuntas.
+- Persentase ketuntasan.
+
+Buat grafik dan tabel.
+
+## B. ANALISIS BUTIR SOAL
+
+Analisis:
+- Tingkat kesukaran.
+- Daya pembeda.
+- Efektivitas pengecoh.
+- Validitas butir.
+- Reliabilitas.
+
+Metode harus jelas.
+
+Gunakan:
+- Proporsi jawaban benar untuk indeks kesukaran.
+- Kelompok atas dan bawah atau korelasi item-total untuk daya pembeda.
+- Distribusi pilihan untuk efektivitas pengecoh.
+- KR-20 untuk data dikotomis yang sesuai.
+- Cronbach's Alpha untuk instrumen yang sesuai.
+
+Untuk essay gunakan analisis skor rubrik yang relevan.
+
+Jika jumlah peserta atau variasi respons tidak cukup, tampilkan peringatan dan jangan memaksakan kesimpulan statistik.
+
+## C. ANALISIS CP DAN TP
+
+Tampilkan:
+- TP sudah dikuasai.
+- TP belum dikuasai.
+- Materi yang membutuhkan penguatan.
+- Siswa yang memerlukan pendampingan.
+- Siswa yang memerlukan pengayaan.
+
+Gunakan ambang ketercapaian yang dapat dikonfigurasi, bukan angka yang ditentukan secara sepihak.
+
+## D. ANALISIS INDIVIDU
+
+Setiap siswa memiliki laporan:
+- Nilai.
+- Capaian TP.
+- Kekuatan.
+- Area yang perlu diperbaiki.
+- Riwayat asesmen.
+- Rekomendasi tindak lanjut.
+
+## E. ANALISIS AI
+
+AI boleh menyusun narasi analisis dan rekomendasi berdasarkan data yang sudah dihitung.
+
+AI tidak boleh:
+- Mengarang nilai.
+- Mengarang persentase.
+- Mengarang jumlah siswa.
+- Membuat kesimpulan statistik tanpa data.
+- Menentukan ketuntasan tanpa kriteria yang ditetapkan.
+
+---
+
+# BAGIAN 19. MODUL REKAP HASIL ASESMEN
+
+Buat rekap profesional dengan berbagai sudut pandang.
+
+1. Rekap per siswa.
+2. Rekap per kelas.
+3. Rekap per guru.
+4. Rekap per mata pelajaran.
+5. Rekap per jenis asesmen.
+6. Rekap per semester.
+7. Rekap per tahun pelajaran.
+8. Rekap seluruh madrasah.
+
+Tampilkan:
+- Nilai setiap siswa.
+- Rata-rata kelas.
+- Ketuntasan.
+- Distribusi nilai.
+- Perbandingan asesmen.
+- Riwayat nilai.
+
+Sediakan filter dan ekspor Excel/PDF.
+
+---
+
+# BAGIAN 20. BUKU NILAI DIGITAL OTOMATIS
+
+MODUL INI WAJIB BERFUNGSI SEMPURNA.
+
+Buku nilai harus menjadi pusat penyimpanan seluruh hasil penilaian guru.
+
+Jenis penilaian:
+- Formatif.
+- Sumatif Akhir Bab.
+- Sumatif Akhir Semester.
+- Sumatif Akhir Tahun.
+- Ujian Madrasah.
+
+Tampilan buku nilai:
+
+Kolom:
+- Nomor.
+- Nama siswa.
+- Identitas siswa.
+- Kelas.
+- Formatif.
+- Sumatif Bab.
+- Sumatif Semester.
+- Sumatif Tahun.
+- Ujian Madrasah.
+- Rekap nilai.
+
+Buat tampilan:
+1. Buku nilai guru.
+2. Buku nilai mata pelajaran.
+3. Buku nilai kelas.
+4. Buku nilai siswa.
+5. Rekap semester.
+6. Rekap tahunan.
+
+## MEKANISME NILAI OTOMATIS
+
+Urutan wajib:
+
+1. Guru membuat asesmen.
+2. Guru menyusun kisi-kisi.
+3. Sistem menghasilkan soal.
+4. Guru memvalidasi soal.
+5. Asesmen diterbitkan.
+6. Peserta didik mengerjakan.
+7. Sistem mengoreksi jawaban objektif.
+8. Guru mengoreksi essay.
+9. Sistem menghitung nilai.
+10. Guru memverifikasi hasil.
+11. Guru mengesahkan nilai.
+12. Sistem otomatis mengirim nilai ke buku nilai.
+13. Rekap kelas diperbarui.
+
+Jangan memasukkan nilai ke buku nilai resmi sebelum proses pengesahan.
+
+Gunakan transaksi database.
+
+Gunakan unique constraint untuk mencegah nilai ganda.
+
+Setiap nilai mempunyai:
+- ID asesmen.
+- ID siswa.
+- ID mapel.
+- ID kelas.
+- Semester.
+- Tahun pelajaran.
+- Jenis penilaian.
+- Nilai.
+- Status.
+- Pengesah.
+- Waktu pengesahan.
+- Riwayat revisi.
+
+Jika nilai dikoreksi, buat riwayat perubahan dan jangan menghilangkan nilai sebelumnya.
+
+Bobot kategori dan rumus rekap harus dapat dikonfigurasi sesuai kebijakan madrasah.
+
+Jangan mengasumsikan semua jenis penilaian memiliki bobot yang sama.
+
+---
+
+# BAGIAN 21. REMEDIAL DAN PENGAYAAN
+
+Buat sistem tindak lanjut.
+
+REMEDIAL:
+- Identifikasi siswa belum tuntas.
+- Daftar TP yang belum dikuasai.
+- Rekomendasi kegiatan.
+- Penugasan.
+- Asesmen ulang.
+- Nilai awal.
+- Nilai remedial.
+- Riwayat.
+
+PENGAYAAN:
+- Identifikasi siswa yang telah menguasai TP.
+- Rekomendasi kegiatan.
+- Penugasan.
+- Hasil pengayaan.
+- Dokumentasi.
+
+Semua terhubung dengan buku nilai dan laporan perkembangan siswa.
+
+---
+
+# BAGIAN 22. LAPORAN DAN EKSPOR
+
+Sediakan:
+- Laporan hasil asesmen.
+- Laporan analisis butir.
+- Laporan kisi-kisi.
+- Kartu soal.
+- Rubrik.
+- Naskah soal.
+- Kunci jawaban.
+- Rekap nilai.
+- Buku nilai.
+- Laporan remedial.
+- Laporan pengayaan.
+- Laporan capaian TP.
+
+Format:
+- Excel.
+- PDF.
+- DOCX.
+
+Pastikan format dokumen profesional, rapi, dan dapat dicetak.
+
+---
+
+# BAGIAN 23. DATABASE SUPABASE
+
+Buat database relasional dengan tabel berikut.
+
+MASTER DATA:
+- profiles
+- user_roles
+- academic_years
+- semesters
+- classes
+- students
+- teachers
+- subjects
+- class_subjects
+- teacher_assignments
+
+KURIKULUM:
+- curriculum_frameworks
+- learning_phases
+- learning_outcomes
+- learning_objectives
+- learning_paths
+- learning_materials
+
+ASESMEN:
+- assessments
+- assessment_blueprints
+- assessment_versions
+- question_banks
+- questions
+- question_options
+- question_rubrics
+- assessment_questions
+
+GENERATOR:
+- generation_jobs
+- generation_job_batches
+- generation_job_items
+
+PELAKSANAAN:
+- assessment_sessions
+- student_answers
+- grading_results
+
+BUKU NILAI:
+- grade_components
+- gradebook_entries
+- grade_revisions
+- remedial_records
+- enrichment_records
+
+ANALISIS:
+- assessment_analytics
+- question_analytics
+- student_analytics
+- learning_objective_analytics
+
+SISTEM:
+- notifications
+- audit_logs
+- app_settings
+- imported_files
+- export_jobs
+
+Gunakan:
+- UUID.
+- Foreign keys.
+- Unique constraints.
+- Check constraints.
+- Indexes.
+- Timestamps.
+- Soft delete bila diperlukan.
+
+Simpan snapshot soal pada saat asesmen diterbitkan.
+
+Perubahan soal di bank soal tidak boleh mengubah ujian yang sudah dilaksanakan.
+
+Gunakan transaksi database untuk proses koreksi final dan sinkronisasi nilai.
+
+Buat seluruh SQL migration.
+
+Jangan hanya membuat skema di dokumentasi. Implementasikan database sebenarnya.
+
+---
+
+# BAGIAN 24. KEAMANAN DAN AUDIT
+
+Terapkan:
+
+- Supabase RLS.
+- Role-based access.
+- Server-side authorization.
+- Validasi Zod.
+- API rate limiting.
+- Proteksi secret.
+- Validasi file upload.
+- Pembatasan akses dokumen.
+- Audit log.
+- Backup.
+- Recovery.
+- Error handling.
+
+Guru hanya dapat mengakses data yang menjadi kewenangannya.
+
+Wali kelas hanya dapat melihat kelas yang ditugaskan.
+
+Peserta didik hanya dapat mengakses asesmen dan nilai miliknya.
+
+Kunci jawaban tidak boleh bocor.
+
+Semua perubahan nilai harus tercatat.
+
+Service role key hanya digunakan di server.
+
+---
+
+# BAGIAN 25. STRUKTUR PROYEK
+
+Buat struktur modular:
+
+src/
+  app/
+    (auth)/
+    (dashboard)/
+      dashboard/
+      master-data/
+      curriculum/
+      assessments/
+      generator/
+      blueprints/
+      question-cards/
+      question-banks/
+      rubrics/
+      examinations/
+      grading/
+      analytics/
+      gradebook/
+      remedial/
+      enrichment/
+      reports/
+      users/
+      settings/
+      audit-logs/
+    student/
+      dashboard/
+      examinations/
+      results/
+    api/
+      ai/
+      generator/
+      assessments/
+      grading/
+      analytics/
+      imports/
+      exports/
+
+  components/
+    ui/
+    layout/
+    dashboard/
+    generator/
+    assessment/
+    gradebook/
+    analytics/
+    reports/
+
+  lib/
+    supabase/
+    auth/
+    permissions/
+    ai/
+    validators/
+    calculations/
+    analytics/
+    exports/
+    imports/
+
+  services/
+    assessment-service.ts
+    generator-service.ts
+    grading-service.ts
+    analytics-service.ts
+    gradebook-service.ts
+
+  types/
+    database.ts
+    assessment.ts
+    question.ts
+    grading.ts
+
+supabase/
+  migrations/
+  seed.sql
+
+tests/
+  unit/
+  integration/
+  e2e/
+
+Lengkapi struktur sesuai kebutuhan.
+
+Jangan menumpuk seluruh kode aplikasi dalam satu file.
+
+---
+
+# BAGIAN 26. DASHBOARD
+
+Dashboard kepala madrasah:
+- Jumlah guru.
+- Jumlah siswa.
+- Jumlah kelas.
+- Jumlah asesmen.
+- Asesmen aktif.
+- Asesmen selesai.
+- Rekap ketuntasan.
+- Grafik hasil asesmen.
+- Aktivitas guru.
+
+Dashboard guru:
+- Asesmen dibuat.
+- Soal di bank soal.
+- Generator aktif.
+- Soal menunggu validasi.
+- Asesmen berlangsung.
+- Hasil menunggu koreksi.
+- Nilai menunggu pengesahan.
+- Buku nilai.
+
+Dashboard wali kelas:
+- Rekap seluruh mapel.
+- Perkembangan siswa.
+- Ketuntasan.
+- Daftar remedial.
+- Laporan kelas.
+
+Semua angka dan grafik wajib menggunakan data database aktual.
+
+Jika data belum tersedia, tampilkan kondisi kosong yang informatif, bukan angka palsu.
+
+---
+
+# BAGIAN 27. PENGUJIAN MENYELURUH
+
+Sebelum menyatakan aplikasi selesai, lakukan pengujian:
+
+1. Login seluruh peran.
+2. Hak akses.
+3. Input master data.
+4. Impor Excel.
+5. Data kurikulum.
+6. Generator PG.
+7. Generator Isian.
+8. Generator Essay.
+9. Generate ketiga jenis sekaligus.
+10. Generate 35 soal.
+11. Generate 100 soal.
+12. Generate 300 soal.
+13. Generate lebih dari 300 soal sesuai kapasitas.
+14. Batch processing.
+15. Retry batch gagal.
+16. Resume job.
+17. Validasi jumlah.
+18. Deteksi duplikasi.
+19. Editor soal.
+20. Kisi-kisi.
+21. Kartu soal.
+22. Rubrik essay.
+23. Naskah soal.
+24. Bank soal.
+25. CBT.
+26. Autosave.
+27. Koreksi otomatis.
+28. Koreksi manual.
+29. Analisis hasil.
+30. Analisis butir soal.
+31. Rekap hasil.
+32. Sinkronisasi buku nilai.
+33. Pencegahan nilai ganda.
+34. Riwayat revisi.
+35. Ekspor dokumen.
+36. RLS.
+37. Tampilan HP.
+38. Deployment Vercel.
+
+Gunakan unit test, integration test, dan end-to-end test.
+
+Jangan menyatakan pengujian berhasil tanpa menjalankannya.
+
+Jangan menyatakan aplikasi siap digunakan jika masih ada modul inti yang hanya berupa placeholder.
+
+---
+
+# BAGIAN 28. DEPLOYMENT
+
+Buat panduan deployment lengkap:
+
+1. Membuat repository GitHub.
+2. Menyiapkan project Supabase.
+3. Menjalankan database migration.
+4. Mengatur Auth.
+5. Mengatur Storage.
+6. Mengatur RLS.
+7. Menyiapkan Gemini API.
+8. Mengatur environment Vercel.
+9. Menghubungkan GitHub.
+10. Deployment.
+11. Testing production.
+12. Backup dan monitoring.
+
+Sediakan .env.example:
+
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
+SUPABASE_SERVICE_ROLE_KEY=
+GEMINI_API_KEY=
+NEXT_PUBLIC_APP_URL=
+
+Jangan mengunggah file .env asli.
+
+Pastikan sistem batch processing dapat berjalan di lingkungan production. Jangan mengandalkan proses background yang akan terhenti ketika fungsi serverless berakhir.
+
+---
+
+# BAGIAN 29. OUTPUT AKHIR WAJIB
+
+Hasil pembangunan harus mencakup:
+
+1. Source code lengkap.
+2. Database PostgreSQL.
+3. SQL migration.
+4. RLS policies.
+5. Auth dan role management.
+6. Master data.
+7. Kurikulum.
+8. AI Generator.
+9. Bulk Generation Engine.
+10. Editor soal.
+11. Kisi-kisi otomatis.
+12. Kartu soal otomatis.
+13. Rubrik penilaian.
+14. Bank soal.
+15. Naskah soal.
+16. CBT.
+17. Koreksi otomatis.
+18. Koreksi essay.
+19. Analisis hasil.
+20. Analisis butir soal.
+21. Analisis capaian TP.
+22. Rekap hasil.
+23. Buku nilai otomatis.
+24. Remedial dan pengayaan.
+25. Laporan.
+26. Ekspor Excel/PDF/DOCX.
+27. Unit test.
+28. Integration test.
+29. Dokumentasi.
+30. Panduan deployment.
+
+---
+
+# BAGIAN 30. INSTRUKSI FINAL DAN LARANGAN
+
+BACA SELURUH INSTRUKSI SEBELUM MEMULAI PEMBANGUNAN.
+
+Jangan mengubah nama aplikasi.
+
+Jangan mengubah identitas MIN 1 Paser.
+
+Jangan mengganti teknologi utama.
+
+Jangan menghilangkan modul.
+
+Jangan membatasi generator hanya 100 soal.
+
+Jangan membuat generator tiga jenis soal secara terpisah jika guru memilih semuanya sekaligus.
+
+Jangan membuat kisi-kisi dan kartu soal hanya sebagai teks tanpa relasi database.
+
+Jangan membuat rubrik essay tanpa terhubung ke sistem koreksi.
+
+Jangan menghasilkan analisis statistik palsu.
+
+Jangan mengisi database dengan data siswa, guru, nilai, atau kurikulum fiktif.
+
+Jangan memasukkan nilai yang belum disahkan ke buku nilai resmi.
+
+Jangan membiarkan perubahan soal mengubah ujian historis.
+
+Jangan membocorkan kunci jawaban kepada peserta didik.
+
+Jangan membuat tombol yang tidak berfungsi.
+
+Jangan membuat menu kosong lalu menyebut aplikasi selesai.
+
+Jangan menaruh logika bisnis penting hanya di frontend.
+
+Jangan mengklaim deployment berhasil jika belum dilakukan.
+
+Jika terdapat batasan teknis, jelaskan secara jujur dan berikan solusi implementasi.
+
+Prioritaskan:
+1. Ketepatan data.
+2. Validitas instrumen asesmen.
+3. Keamanan.
+4. Integritas database.
+5. Akurasi penilaian.
+6. Stabilitas aplikasi.
+7. Kemudahan penggunaan guru.
+8. Kecepatan pemrosesan.
+
+Lakukan pembangunan secara bertahap tetapi pertahankan satu arsitektur dan satu database yang konsisten.
+
+Setiap tahap harus dapat dijalankan dan diuji.
+
+Jika ada fitur yang belum selesai, lanjutkan pengerjaan atau laporkan secara transparan. Jangan menyatakan proyek final sebelum semua fitur inti benar-benar berfungsi.
+
+# HASIL AKHIR YANG DIHARAPKAN
+
+MADRASAH ASSESSMENT PRO harus menjadi aplikasi profesional yang mampu:
+
+- Mengelola seluruh jenis asesmen MIN 1 Paser.
+- Menghasilkan soal otomatis dalam jumlah besar.
+- Menghasilkan pilihan ganda, isian, dan essay dalam satu kali proses.
+- Menghasilkan kisi-kisi otomatis.
+- Menghasilkan kartu soal.
+- Menghasilkan kunci jawaban dan pembahasan.
+- Menghasilkan rubrik penilaian.
+- Menyediakan bank soal digital.
+- Menyelenggarakan ujian berbasis CBT.
+- Mengoreksi soal secara otomatis dan manual.
+- Menganalisis kualitas butir soal.
+- Menganalisis capaian peserta didik.
+- Membuat rekap hasil asesmen.
+- Mengelola remedial dan pengayaan.
+- Menyimpan nilai secara otomatis ke buku nilai setelah pengesahan.
+- Menghasilkan laporan akademik yang dapat dipertanggungjawabkan.
+
+TARGET AKHIR:
+
+SATU APLIKASI, SATU DATABASE, SATU SISTEM TERINTEGRASI UNTUK SELURUH MANAJEMEN ASESMEN MIN 1 PASER.
+
+BANGUN SECARA PROFESIONAL, LENGKAP, AMAN, AKURAT, DAN SIAP DIGUNAKAN DALAM OPERASIONAL MADRASAH.
+
+JANGAN BERHENTI PADA PROTOTYPE. IMPLEMENTASIKAN SISTEM YANG BENAR-BENAR BERFUNGSI.
