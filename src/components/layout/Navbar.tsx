@@ -72,6 +72,17 @@ export const Navbar: React.FC<NavbarProps> = ({ currentUser, activeView, onNavig
 
         {/* Right: Quick actions & Role Switcher */}
         <div className="flex items-center space-x-3">
+          {/* Active Academic Year Badge */}
+          <div className="hidden lg:flex items-center space-x-1.5 px-2.5 py-1 rounded-md text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200 shadow-2xs">
+            <span className="text-emerald-600 font-normal">T.P.</span>
+            <span className="font-bold">
+              {madrasahStore.getAcademicYears().find((y) => y.isActive)?.name || '2026/2027'}
+            </span>
+            <span className="text-[10px] bg-emerald-200/80 text-emerald-900 px-1.5 py-0.5 rounded font-bold">
+              Ganjil
+            </span>
+          </div>
+
           {/* Quick CBT Switch Button if in other role */}
           {currentUser.role !== 'peserta_didik' ? (
             <button

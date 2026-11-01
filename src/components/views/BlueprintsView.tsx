@@ -87,7 +87,7 @@ export const BlueprintsView: React.FC<BlueprintsViewProps> = ({ onNavigate }) =>
         <h3 style="margin: 0; text-transform: uppercase; font-size: 13pt;">KISI-KISI PENULISAN SOAL ASESMEN</h3>
         <p style="margin: 3px 0 0 0; font-size: 11pt; font-weight: bold;">${selectedAssessment.title}</p>
         <p style="margin: 2px 0 0 0; font-size: 10pt;">
-          Mata Pelajaran: ${currentSubject?.name || '-'} | Kelas/Fase: ${currentClass?.name || '-'} (${currentClass?.phase || '-'}) | Tahun Pelajaran: 2024/2025
+          Mata Pelajaran: ${currentSubject?.name || '-'} | Kelas/Fase: ${currentClass?.name || '-'} (${currentClass?.phase || '-'}) | Tahun Pelajaran: ${madrasahStore.getAcademicYears().find(y => y.id === selectedAssessment.academicYearId)?.name || '2026/2027'}
         </p>
       </div>
 

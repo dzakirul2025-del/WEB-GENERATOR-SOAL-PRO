@@ -141,7 +141,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeView, onNavigate, userRo
       {/* Footer Info in Sidebar */}
       <div className="p-3 m-3 bg-emerald-900/80 rounded-lg border border-emerald-800/80 text-[11px] text-emerald-200/80">
         <div className="font-semibold text-white">MIN 1 PASER</div>
-        <div className="text-[10px] text-emerald-300">Kelas 6-C • T.P. 2024/2025 (Ganjil)</div>
+        <div className="text-[10px] text-emerald-300">Kelas 6-C • T.P. 2026/2027 (Ganjil)</div>
         <div className="mt-1 pt-1 border-t border-emerald-800/80 text-[9px] text-emerald-400">
           Wali: Dzakirul Husni, S.Pd.
         </div>

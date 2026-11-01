@@ -36,7 +36,7 @@ export const QuestionCardsView: React.FC<QuestionCardsViewProps> = ({ onNavigate
           <div style="text-align: center; border-bottom: 2px solid #000; padding-bottom: 8px; margin-bottom: 12px;">
             <div style="font-size: 11pt; font-weight: bold; text-transform: uppercase;">${MADRASAH_INFO.name}</div>
             <div style="font-size: 12pt; font-weight: 800; text-transform: uppercase;">KARTU SOAL NOMOR ${q.number}</div>
-            <div style="font-size: 10pt;">${selectedAssessment.title} • T.P. 2024/2025</div>
+            <div style="font-size: 10pt;">${selectedAssessment.title} • T.P. ${madrasahStore.getAcademicYears().find(y => y.id === selectedAssessment.academicYearId)?.name || '2026/2027'}</div>
           </div>
 
           <table style="width: 100%; border-collapse: collapse; font-size: 9.5pt; margin-bottom: 12px;">

@@ -31,7 +31,7 @@ import {
 } from './seed-data';
 import { STANDARD_SUBJECTS, MOCK_USERS } from './constants';
 
-const STORAGE_PREFIX = 'map_v5_';
+const STORAGE_PREFIX = 'map_v6_';
 const STORAGE_KEYS = {
   ACADEMIC_YEARS: `${STORAGE_PREFIX}academic_years`,
   SEMESTERS: `${STORAGE_PREFIX}semesters`,
@@ -95,7 +95,24 @@ class MadrasahStore {
 
   // --- Master Data ---
   getAcademicYears(): AcademicYear[] {
-    return getLocal<AcademicYear[]>(STORAGE_KEYS.ACADEMIC_YEARS, INITIAL_ACADEMIC_YEARS);
+    const list = getLocal<AcademicYear[]>(STORAGE_KEYS.ACADEMIC_YEARS, INITIAL_ACADEMIC_YEARS);
+    const hasCurrentYears = list.some((y) => y.name === '2026/2027');
+    if (!hasCurrentYears) {
+      setLocal(STORAGE_KEYS.ACADEMIC_YEARS, INITIAL_ACADEMIC_YEARS);
+      return INITIAL_ACADEMIC_YEARS;
+    }
+    return list;
+  }
+
+  setActiveAcademicYear(yearId: string) {
+    const years = this.getAcademicYears().map((y) => ({
+      ...y,
+      isActive: y.id === yearId,
+    }));
+    setLocal(STORAGE_KEYS.ACADEMIC_YEARS, years);
+    const target = years.find((y) => y.id === yearId);
+    this.logAudit('SET_ACTIVE_ACADEMIC_YEAR', 'AcademicYear', yearId, `Mengaktifkan tahun pelajaran: ${target?.name || yearId}`);
+    this.notify();
   }
 
   getSemesters(): Semester[] {

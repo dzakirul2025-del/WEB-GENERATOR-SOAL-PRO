@@ -27,7 +27,11 @@ export const GradebookView: React.FC<GradebookViewProps> = ({ onNavigate }) => {
   const assessments = madrasahStore.getAssessments();
   const gradebookEntries = madrasahStore.getGradebook();
   const currentUser = madrasahStore.getCurrentUser();
+  const academicYears = madrasahStore.getAcademicYears();
 
+  const [selectedAcademicYearId, setSelectedAcademicYearId] = useState<string>(
+    academicYears.find((y) => y.isActive)?.id || academicYears[0]?.id || 'ay-2026-2027'
+  );
   const [selectedClassId, setSelectedClassId] = useState<string>(classes[0]?.id || 'cls-6c');
   const [selectedSubjectId, setSelectedSubjectId] = useState<string>('sub-mtk');
   const [activeTab, setActiveTab] = useState<'rekap' | 'revisi' | 'pengesahan'>('rekap');
@@ -214,6 +218,21 @@ export const GradebookView: React.FC<GradebookViewProps> = ({ onNavigate }) => {
       {/* Selector & Tabs Bar */}
       <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-2xs flex flex-wrap items-center justify-between gap-4">
         <div className="flex flex-wrap items-center gap-3">
+          <div>
+            <label className="block text-[11px] font-semibold text-gray-600 mb-0.5">Tahun Pelajaran</label>
+            <select
+              value={selectedAcademicYearId}
+              onChange={(e) => setSelectedAcademicYearId(e.target.value)}
+              className="text-xs rounded-lg border border-gray-300 p-2 font-medium bg-white"
+            >
+              {academicYears.map((ay) => (
+                <option key={ay.id} value={ay.id}>
+                  T.P. {ay.name} {ay.isActive ? '(Aktif)' : ''}
+                </option>
+              ))}
+            </select>
+          </div>
+
           <div>
             <label className="block text-[11px] font-semibold text-gray-600 mb-0.5">Pilih Kelas</label>
             <select

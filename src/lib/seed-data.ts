@@ -14,13 +14,15 @@ import {
 import { STANDARD_SUBJECTS } from './constants';
 
 export const INITIAL_ACADEMIC_YEARS: AcademicYear[] = [
-  { id: 'ay-2024-2025', name: '2024/2025', isActive: true },
-  { id: 'ay-2025-2026', name: '2025/2026', isActive: false },
+  { id: 'ay-2026-2027', name: '2026/2027', isActive: true },
+  { id: 'ay-2027-2028', name: '2027/2028', isActive: false },
+  { id: 'ay-2028-2029', name: '2028/2029', isActive: false },
+  { id: 'ay-2029-2030', name: '2029/2030', isActive: false },
 ];
 
 export const INITIAL_SEMESTERS: Semester[] = [
-  { id: 'sem-ganjil', academicYearId: 'ay-2024-2025', name: 'Ganjil', isActive: true },
-  { id: 'sem-genap', academicYearId: 'ay-2024-2025', name: 'Genap', isActive: false },
+  { id: 'sem-ganjil', academicYearId: 'ay-2026-2027', name: 'Ganjil', isActive: true },
+  { id: 'sem-genap', academicYearId: 'ay-2026-2027', name: 'Genap', isActive: false },
 ];
 
 // Kelas 6-C sebagai kelas utama yang menggunakan aplikasi web ini
@@ -30,7 +32,7 @@ export const INITIAL_CLASSES: MadrasahClass[] = [
     name: 'Kelas 6-C',
     grade: 6,
     phase: 'Fase C',
-    academicYearId: 'ay-2024-2025',
+    academicYearId: 'ay-2026-2027',
     homeroomTeacherId: 'user-dzakirul',
   },
   {
@@ -38,7 +40,7 @@ export const INITIAL_CLASSES: MadrasahClass[] = [
     name: 'Kelas 6-A',
     grade: 6,
     phase: 'Fase C',
-    academicYearId: 'ay-2024-2025',
+    academicYearId: 'ay-2026-2027',
     homeroomTeacherId: 'user-t-6a',
   },
   {
@@ -46,7 +48,7 @@ export const INITIAL_CLASSES: MadrasahClass[] = [
     name: 'Kelas 6-B',
     grade: 6,
     phase: 'Fase C',
-    academicYearId: 'ay-2024-2025',
+    academicYearId: 'ay-2026-2027',
     homeroomTeacherId: 'user-t-6b',
   },
   {
@@ -54,7 +56,7 @@ export const INITIAL_CLASSES: MadrasahClass[] = [
     name: 'Kelas 5-A',
     grade: 5,
     phase: 'Fase C',
-    academicYearId: 'ay-2024-2025',
+    academicYearId: 'ay-2026-2027',
     homeroomTeacherId: 'user-t-5',
   },
   {
@@ -62,7 +64,7 @@ export const INITIAL_CLASSES: MadrasahClass[] = [
     name: 'Kelas 4-A',
     grade: 4,
     phase: 'Fase B',
-    academicYearId: 'ay-2024-2025',
+    academicYearId: 'ay-2026-2027',
     homeroomTeacherId: 'user-t-4',
   },
 ];
@@ -244,7 +246,7 @@ export const INITIAL_ASSESSMENTS: Assessment[] = [
     id: 'asm-sas-mtk-6c',
     title: 'Sumatif Akhir Semester (SAS) Ganjil - Matematika Kelas 6-C',
     type: 'sumatif_semester',
-    academicYearId: 'ay-2024-2025',
+    academicYearId: 'ay-2026-2027',
     semesterId: 'sem-ganjil',
     classId: 'cls-6c',
     subjectId: 'sub-mtk',
@@ -281,7 +283,7 @@ export const INITIAL_ASSESSMENTS: Assessment[] = [
     id: 'asm-sas-ipas-6c',
     title: 'Sumatif Akhir Semester (SAS) Ganjil - IPAS Kelas 6-C',
     type: 'sumatif_semester',
-    academicYearId: 'ay-2024-2025',
+    academicYearId: 'ay-2026-2027',
     semesterId: 'sem-ganjil',
     classId: 'cls-6c',
     subjectId: 'sub-ipas',
@@ -316,7 +318,7 @@ export const INITIAL_ASSESSMENTS: Assessment[] = [
     id: 'asm-sab-bin-6c',
     title: 'Sumatif Akhir Bab 1: Teks Eksplanasi Ilmiah Kelas 6-C',
     type: 'sumatif_bab',
-    academicYearId: 'ay-2024-2025',
+    academicYearId: 'ay-2026-2027',
     semesterId: 'sem-ganjil',
     classId: 'cls-6c',
     subjectId: 'sub-bindo',
@@ -351,7 +353,7 @@ export const INITIAL_ASSESSMENTS: Assessment[] = [
     id: 'asm-sab-ppkn-6c',
     title: 'Sumatif Akhir Bab 1: Nilai Juang Perumus Pancasila Kelas 6-C',
     type: 'sumatif_bab',
-    academicYearId: 'ay-2024-2025',
+    academicYearId: 'ay-2026-2027',
     semesterId: 'sem-ganjil',
     classId: 'cls-6c',
     subjectId: 'sub-ppkn',
@@ -386,7 +388,7 @@ export const INITIAL_ASSESSMENTS: Assessment[] = [
     id: 'asm-sab-sbdp-6c',
     title: 'Sumatif Akhir Bab 1: Reklame & Poster Lingkungan Kelas 6-C',
     type: 'sumatif_bab',
-    academicYearId: 'ay-2024-2025',
+    academicYearId: 'ay-2026-2027',
     semesterId: 'sem-ganjil',
     classId: 'cls-6c',
     subjectId: 'sub-sbdp',
@@ -1058,18 +1060,18 @@ export const INITIAL_EXAM_SESSIONS: StudentExamSession[] = [
 
 // Buku Nilai Digital Resmi Kelas 6-C MIN 1 Paser
 export const INITIAL_GRADEBOOK_ENTRIES: GradebookEntry[] = [
-  { id: 'gb-6c-01', assessmentId: 'asm-sas-mtk-6c', studentId: 'std-6c-01', subjectId: 'sub-mtk', classId: 'cls-6c', academicYearId: 'ay-2024-2025', semesterId: 'sem-ganjil', assessmentType: 'sumatif_semester', finalScore: 95, isPassed: true, status: 'disahkan', endorsedBy: 'Ismail, S.Ag.', endorsedAt: '2024-12-07T09:00:00Z', revisions: [] },
-  { id: 'gb-6c-02', assessmentId: 'asm-sas-mtk-6c', studentId: 'std-6c-02', subjectId: 'sub-mtk', classId: 'cls-6c', academicYearId: 'ay-2024-2025', semesterId: 'sem-ganjil', assessmentType: 'sumatif_semester', finalScore: 90, isPassed: true, status: 'disahkan', endorsedBy: 'Ismail, S.Ag.', endorsedAt: '2024-12-07T09:00:00Z', revisions: [] },
-  { id: 'gb-6c-03', assessmentId: 'asm-sas-mtk-6c', studentId: 'std-6c-03', subjectId: 'sub-mtk', classId: 'cls-6c', academicYearId: 'ay-2024-2025', semesterId: 'sem-ganjil', assessmentType: 'sumatif_semester', finalScore: 85, isPassed: true, status: 'disahkan', endorsedBy: 'Ismail, S.Ag.', endorsedAt: '2024-12-07T09:00:00Z', revisions: [] },
-  { id: 'gb-6c-04', assessmentId: 'asm-sas-mtk-6c', studentId: 'std-6c-04', subjectId: 'sub-mtk', classId: 'cls-6c', academicYearId: 'ay-2024-2025', semesterId: 'sem-ganjil', assessmentType: 'sumatif_semester', finalScore: 88, isPassed: true, status: 'disahkan', endorsedBy: 'Ismail, S.Ag.', endorsedAt: '2024-12-07T09:00:00Z', revisions: [] },
-  { id: 'gb-6c-05', assessmentId: 'asm-sas-mtk-6c', studentId: 'std-6c-05', subjectId: 'sub-mtk', classId: 'cls-6c', academicYearId: 'ay-2024-2025', semesterId: 'sem-ganjil', assessmentType: 'sumatif_semester', finalScore: 65, isPassed: false, status: 'disahkan', endorsedBy: 'Ismail, S.Ag.', endorsedAt: '2024-12-07T09:00:00Z', revisions: [] },
-  { id: 'gb-6c-06', assessmentId: 'asm-sas-mtk-6c', studentId: 'std-6c-06', subjectId: 'sub-mtk', classId: 'cls-6c', academicYearId: 'ay-2024-2025', semesterId: 'sem-ganjil', assessmentType: 'sumatif_semester', finalScore: 92, isPassed: true, status: 'disahkan', endorsedBy: 'Ismail, S.Ag.', endorsedAt: '2024-12-07T09:00:00Z', revisions: [] },
-  { id: 'gb-6c-07', assessmentId: 'asm-sas-mtk-6c', studentId: 'std-6c-07', subjectId: 'sub-mtk', classId: 'cls-6c', academicYearId: 'ay-2024-2025', semesterId: 'sem-ganjil', assessmentType: 'sumatif_semester', finalScore: 82, isPassed: true, status: 'disahkan', endorsedBy: 'Ismail, S.Ag.', endorsedAt: '2024-12-07T09:00:00Z', revisions: [] },
-  { id: 'gb-6c-08', assessmentId: 'asm-sas-mtk-6c', studentId: 'std-6c-08', subjectId: 'sub-mtk', classId: 'cls-6c', academicYearId: 'ay-2024-2025', semesterId: 'sem-ganjil', assessmentType: 'sumatif_semester', finalScore: 86, isPassed: true, status: 'disahkan', endorsedBy: 'Ismail, S.Ag.', endorsedAt: '2024-12-07T09:00:00Z', revisions: [] },
-  { id: 'gb-6c-09', assessmentId: 'asm-sas-mtk-6c', studentId: 'std-6c-09', subjectId: 'sub-mtk', classId: 'cls-6c', academicYearId: 'ay-2024-2025', semesterId: 'sem-ganjil', assessmentType: 'sumatif_semester', finalScore: 78, isPassed: true, status: 'disahkan', endorsedBy: 'Ismail, S.Ag.', endorsedAt: '2024-12-07T09:00:00Z', revisions: [] },
-  { id: 'gb-6c-10', assessmentId: 'asm-sas-mtk-6c', studentId: 'std-6c-10', subjectId: 'sub-mtk', classId: 'cls-6c', academicYearId: 'ay-2024-2025', semesterId: 'sem-ganjil', assessmentType: 'sumatif_semester', finalScore: 94, isPassed: true, status: 'disahkan', endorsedBy: 'Ismail, S.Ag.', endorsedAt: '2024-12-07T09:00:00Z', revisions: [] },
-  { id: 'gb-6c-11', assessmentId: 'asm-sas-mtk-6c', studentId: 'std-6c-11', subjectId: 'sub-mtk', classId: 'cls-6c', academicYearId: 'ay-2024-2025', semesterId: 'sem-ganjil', assessmentType: 'sumatif_semester', finalScore: 89, isPassed: true, status: 'disahkan', endorsedBy: 'Ismail, S.Ag.', endorsedAt: '2024-12-07T09:00:00Z', revisions: [] },
-  { id: 'gb-6c-12', assessmentId: 'asm-sas-mtk-6c', studentId: 'std-6c-12', subjectId: 'sub-mtk', classId: 'cls-6c', academicYearId: 'ay-2024-2025', semesterId: 'sem-ganjil', assessmentType: 'sumatif_semester', finalScore: 81, isPassed: true, status: 'disahkan', endorsedBy: 'Ismail, S.Ag.', endorsedAt: '2024-12-07T09:00:00Z', revisions: [] },
+  { id: 'gb-6c-01', assessmentId: 'asm-sas-mtk-6c', studentId: 'std-6c-01', subjectId: 'sub-mtk', classId: 'cls-6c', academicYearId: 'ay-2026-2027', semesterId: 'sem-ganjil', assessmentType: 'sumatif_semester', finalScore: 95, isPassed: true, status: 'disahkan', endorsedBy: 'Ismail, S.Ag.', endorsedAt: '2024-12-07T09:00:00Z', revisions: [] },
+  { id: 'gb-6c-02', assessmentId: 'asm-sas-mtk-6c', studentId: 'std-6c-02', subjectId: 'sub-mtk', classId: 'cls-6c', academicYearId: 'ay-2026-2027', semesterId: 'sem-ganjil', assessmentType: 'sumatif_semester', finalScore: 90, isPassed: true, status: 'disahkan', endorsedBy: 'Ismail, S.Ag.', endorsedAt: '2024-12-07T09:00:00Z', revisions: [] },
+  { id: 'gb-6c-03', assessmentId: 'asm-sas-mtk-6c', studentId: 'std-6c-03', subjectId: 'sub-mtk', classId: 'cls-6c', academicYearId: 'ay-2026-2027', semesterId: 'sem-ganjil', assessmentType: 'sumatif_semester', finalScore: 85, isPassed: true, status: 'disahkan', endorsedBy: 'Ismail, S.Ag.', endorsedAt: '2024-12-07T09:00:00Z', revisions: [] },
+  { id: 'gb-6c-04', assessmentId: 'asm-sas-mtk-6c', studentId: 'std-6c-04', subjectId: 'sub-mtk', classId: 'cls-6c', academicYearId: 'ay-2026-2027', semesterId: 'sem-ganjil', assessmentType: 'sumatif_semester', finalScore: 88, isPassed: true, status: 'disahkan', endorsedBy: 'Ismail, S.Ag.', endorsedAt: '2024-12-07T09:00:00Z', revisions: [] },
+  { id: 'gb-6c-05', assessmentId: 'asm-sas-mtk-6c', studentId: 'std-6c-05', subjectId: 'sub-mtk', classId: 'cls-6c', academicYearId: 'ay-2026-2027', semesterId: 'sem-ganjil', assessmentType: 'sumatif_semester', finalScore: 65, isPassed: false, status: 'disahkan', endorsedBy: 'Ismail, S.Ag.', endorsedAt: '2024-12-07T09:00:00Z', revisions: [] },
+  { id: 'gb-6c-06', assessmentId: 'asm-sas-mtk-6c', studentId: 'std-6c-06', subjectId: 'sub-mtk', classId: 'cls-6c', academicYearId: 'ay-2026-2027', semesterId: 'sem-ganjil', assessmentType: 'sumatif_semester', finalScore: 92, isPassed: true, status: 'disahkan', endorsedBy: 'Ismail, S.Ag.', endorsedAt: '2024-12-07T09:00:00Z', revisions: [] },
+  { id: 'gb-6c-07', assessmentId: 'asm-sas-mtk-6c', studentId: 'std-6c-07', subjectId: 'sub-mtk', classId: 'cls-6c', academicYearId: 'ay-2026-2027', semesterId: 'sem-ganjil', assessmentType: 'sumatif_semester', finalScore: 82, isPassed: true, status: 'disahkan', endorsedBy: 'Ismail, S.Ag.', endorsedAt: '2024-12-07T09:00:00Z', revisions: [] },
+  { id: 'gb-6c-08', assessmentId: 'asm-sas-mtk-6c', studentId: 'std-6c-08', subjectId: 'sub-mtk', classId: 'cls-6c', academicYearId: 'ay-2026-2027', semesterId: 'sem-ganjil', assessmentType: 'sumatif_semester', finalScore: 86, isPassed: true, status: 'disahkan', endorsedBy: 'Ismail, S.Ag.', endorsedAt: '2024-12-07T09:00:00Z', revisions: [] },
+  { id: 'gb-6c-09', assessmentId: 'asm-sas-mtk-6c', studentId: 'std-6c-09', subjectId: 'sub-mtk', classId: 'cls-6c', academicYearId: 'ay-2026-2027', semesterId: 'sem-ganjil', assessmentType: 'sumatif_semester', finalScore: 78, isPassed: true, status: 'disahkan', endorsedBy: 'Ismail, S.Ag.', endorsedAt: '2024-12-07T09:00:00Z', revisions: [] },
+  { id: 'gb-6c-10', assessmentId: 'asm-sas-mtk-6c', studentId: 'std-6c-10', subjectId: 'sub-mtk', classId: 'cls-6c', academicYearId: 'ay-2026-2027', semesterId: 'sem-ganjil', assessmentType: 'sumatif_semester', finalScore: 94, isPassed: true, status: 'disahkan', endorsedBy: 'Ismail, S.Ag.', endorsedAt: '2024-12-07T09:00:00Z', revisions: [] },
+  { id: 'gb-6c-11', assessmentId: 'asm-sas-mtk-6c', studentId: 'std-6c-11', subjectId: 'sub-mtk', classId: 'cls-6c', academicYearId: 'ay-2026-2027', semesterId: 'sem-ganjil', assessmentType: 'sumatif_semester', finalScore: 89, isPassed: true, status: 'disahkan', endorsedBy: 'Ismail, S.Ag.', endorsedAt: '2024-12-07T09:00:00Z', revisions: [] },
+  { id: 'gb-6c-12', assessmentId: 'asm-sas-mtk-6c', studentId: 'std-6c-12', subjectId: 'sub-mtk', classId: 'cls-6c', academicYearId: 'ay-2026-2027', semesterId: 'sem-ganjil', assessmentType: 'sumatif_semester', finalScore: 81, isPassed: true, status: 'disahkan', endorsedBy: 'Ismail, S.Ag.', endorsedAt: '2024-12-07T09:00:00Z', revisions: [] },
 ];
 
 // Rekam Program Remedial Kelas 6-C MIN 1 Paser

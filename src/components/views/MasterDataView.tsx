@@ -18,17 +18,19 @@ import {
   AlertTriangle,
   Check,
   X,
+  Calendar,
 } from 'lucide-react';
 import * as XLSX from 'xlsx';
 import { madrasahStore } from '../../lib/storage';
 import { exportToExcel } from '../../lib/export-utils';
 import { MADRASAH_INFO } from '../../lib/constants';
-import { Student } from '../../types';
+import { Student, AcademicYear } from '../../types';
 
 export const MasterDataView: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'siswa' | 'guru' | 'kelas' | 'mapel' | 'profil'>('siswa');
+  const [activeTab, setActiveTab] = useState<'siswa' | 'guru' | 'kelas' | 'mapel' | 'profil' | 'tahun'>('siswa');
 
   const [students, setStudents] = useState<Student[]>(() => madrasahStore.getStudents());
+  const [academicYears, setAcademicYears] = useState<AcademicYear[]>(() => madrasahStore.getAcademicYears());
   const classes = madrasahStore.getClasses();
   const subjects = madrasahStore.getSubjects();
 
@@ -36,6 +38,7 @@ export const MasterDataView: React.FC = () => {
   useEffect(() => {
     const unsubscribe = madrasahStore.subscribe(() => {
       setStudents([...madrasahStore.getStudents()]);
+      setAcademicYears([...madrasahStore.getAcademicYears()]);
     });
     return unsubscribe;
   }, []);
@@ -261,6 +264,14 @@ export const MasterDataView: React.FC = () => {
           Mata Pelajaran ({subjects.length})
         </button>
         <button
+          onClick={() => setActiveTab('tahun')}
+          className={`text-xs px-4 py-2 rounded-lg font-bold transition-colors whitespace-nowrap ${
+            activeTab === 'tahun' ? 'bg-emerald-800 text-white' : 'text-gray-600 hover:bg-gray-100'
+          }`}
+        >
+          Tahun Pelajaran ({academicYears.length})
+        </button>
+        <button
           onClick={() => setActiveTab('profil')}
           className={`text-xs px-4 py-2 rounded-lg font-bold transition-colors whitespace-nowrap ${
             activeTab === 'profil' ? 'bg-emerald-800 text-white' : 'text-gray-600 hover:bg-gray-100'
@@ -440,7 +451,7 @@ export const MasterDataView: React.FC = () => {
               </div>
               <div className="text-xs text-gray-600 space-y-1">
                 <div>Tingkat Kelas: <strong>Kelas {c.grade}</strong></div>
-                <div>Tahun Pelajaran: <strong>2024/2025</strong></div>
+                <div>Tahun Pelajaran: <strong>{academicYears.find((y) => y.isActive)?.name || '2026/2027'}</strong></div>
                 <div>Jumlah Siswa: <strong>{students.filter((s) => s.classId === c.id).length || 12} Siswa</strong></div>
               </div>
             </div>
@@ -513,6 +524,91 @@ export const MasterDataView: React.FC = () => {
               <span className="text-gray-500 font-semibold block">Alamat Resmi:</span>
               <strong className="text-gray-900">{MADRASAH_INFO.address}</strong>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Tab: Tahun Pelajaran */}
+      {activeTab === 'tahun' && (
+        <div className="space-y-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <h3 className="font-bold text-gray-900 text-sm">Pilihan Tahun Pelajaran Resmi</h3>
+              <p className="text-xs text-gray-500">
+                Pilih dan aktifkan tahun pelajaran yang digunakan dalam siklus asesmen, rapor nilai, dan administrasi Kelas 6-C.
+              </p>
+            </div>
+            <div className="text-xs font-semibold text-emerald-800 bg-emerald-50 px-3 py-1.5 rounded-lg border border-emerald-200 shadow-2xs">
+              Tahun Pelajaran Aktif: <strong>{academicYears.find((y) => y.isActive)?.name || '2026/2027'}</strong> (Semester Ganjil)
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {academicYears.map((ay) => {
+              const isActive = ay.isActive;
+              return (
+                <div
+                  key={ay.id}
+                  className={`p-5 rounded-xl border transition-all ${
+                    isActive
+                      ? 'bg-emerald-50/70 border-emerald-500 shadow-xs ring-1 ring-emerald-500'
+                      : 'bg-white border-gray-200 hover:border-gray-300 shadow-2xs'
+                  }`}
+                >
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-gray-500">
+                      {ay.id}
+                    </span>
+                    <span
+                      className={`text-[10px] font-bold px-2 py-0.5 rounded ${
+                        isActive
+                          ? 'bg-emerald-600 text-white'
+                          : 'bg-gray-100 text-gray-600'
+                      }`}
+                    >
+                      {isActive ? 'Aktif Resmi' : 'Tersedia'}
+                    </span>
+                  </div>
+
+                  <div className="text-2xl font-black text-gray-900 mb-1 tracking-tight">
+                    {ay.name}
+                  </div>
+                  <p className="text-xs text-gray-500 mb-4">
+                    {isActive
+                      ? 'Tahun pelajaran operasional berjalan di MIN 1 Paser'
+                      : 'Pilihan tahun ajaran mendatang / arsip'}
+                  </p>
+
+                  {isActive ? (
+                    <div className="flex items-center space-x-1.5 text-xs font-bold text-emerald-700 bg-emerald-100/80 px-3 py-2 rounded-lg justify-center shadow-2xs">
+                      <Check className="w-4 h-4 text-emerald-700" />
+                      <span>Sedang Digunakan</span>
+                    </div>
+                  ) : (
+                    <button
+                      onClick={() => {
+                        madrasahStore.setActiveAcademicYear(ay.id);
+                      }}
+                      className="w-full text-xs font-bold text-gray-700 bg-gray-50 hover:bg-emerald-700 hover:text-white px-3 py-2 rounded-lg border border-gray-200 transition-colors shadow-2xs"
+                    >
+                      Jadikan Aktif
+                    </button>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="bg-amber-50 rounded-xl p-4 border border-amber-200 text-xs text-amber-900 space-y-1">
+            <div className="font-bold flex items-center space-x-1.5 text-amber-950">
+              <Calendar className="w-4 h-4 text-amber-700" />
+              <span>Struktur Semester Akademik Kemenag:</span>
+            </div>
+            <p className="text-gray-700">
+              Tahun Pelajaran <strong>{academicYears.find((y) => y.isActive)?.name || '2026/2027'}</strong> mencakup dua semester aktif:
+              <span className="font-semibold text-emerald-900 ml-1">Semester Ganjil</span> (Juli – Desember) dan
+              <span className="font-semibold text-emerald-900 ml-1">Semester Genap</span> (Januari – Juni).
+            </p>
           </div>
         </div>
       )}

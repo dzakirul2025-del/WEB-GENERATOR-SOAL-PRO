@@ -278,19 +278,28 @@ export const GeneratorView: React.FC<GeneratorViewProps> = ({ onNavigate }) => {
           }),
         });
 
-        if (!response.ok) {
-          const errData = await response.json();
-          throw new Error(errData.error || `Batch ${i + 1} gagal diproses oleh server`);
+        const rawText = await response.text();
+        let data: any = null;
+        try {
+          data = JSON.parse(rawText);
+        } catch {
+          if (!response.ok) {
+            throw new Error(`Server sedang memproses antrean (${response.status}). Silakan ulangi generate.`);
+          }
+          throw new Error('Respon server tidak dalam format JSON yang valid.');
         }
 
-        const data = await response.json();
+        if (!response.ok || !data.success) {
+          throw new Error(data?.error || `Batch ${i + 1} gagal diproses oleh server (${response.status})`);
+        }
+
         if (data.questions && Array.isArray(data.questions)) {
           const processedBatch = data.questions.map((q: QuestionItem, qIdx: number) => ({
             ...q,
             number: currentNumber + qIdx,
             assessmentId: targetAssessmentId,
-            topic,
-            learningObjectiveId: 'tp-aa-4.1',
+            topic: topic || q.topic,
+            learningObjectiveId: selectedTpId || 'tp-mtk-6.1',
           }));
           currentNumber += processedBatch.length;
           allGenerated.push(...processedBatch);
@@ -299,7 +308,7 @@ export const GeneratorView: React.FC<GeneratorViewProps> = ({ onNavigate }) => {
       }
 
       setProgress(100);
-      setStatusMessage(`Selesai! ${allGenerated.length} butir soal berhasil digenerate dan tersimpan sebagai draft.`);
+      setStatusMessage(`Selesai! ${allGenerated.length} butir soal Kurikulum Merdeka Fase C Kelas 6 berhasil digenerate dan tersimpan sebagai draft.`);
     } catch (err: any) {
       console.error('Generation Error:', err);
       setErrorLog(err.message || 'Terjadi kesalahan saat memproses batch ke Gemini AI.');
