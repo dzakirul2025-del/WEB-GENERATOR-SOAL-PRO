@@ -152,6 +152,31 @@ class MadrasahStore {
     return { added, duplicates };
   }
 
+  updateStudent(updatedStudent: Student): Student {
+    const students = this.getStudents();
+    const idx = students.findIndex((s) => s.id === updatedStudent.id);
+    if (idx >= 0) {
+      students[idx] = { ...updatedStudent };
+      setLocal(STORAGE_KEYS.STUDENTS, students);
+      this.logAudit('UPDATE_STUDENT', 'Student', updatedStudent.id, `Memperbarui data siswa: ${updatedStudent.name}`);
+      this.notify();
+    }
+    return updatedStudent;
+  }
+
+  deleteStudent(id: string): boolean {
+    const students = this.getStudents();
+    const target = students.find((s) => s.id === id);
+    const filtered = students.filter((s) => s.id !== id);
+    if (filtered.length !== students.length) {
+      setLocal(STORAGE_KEYS.STUDENTS, filtered);
+      this.logAudit('DELETE_STUDENT', 'Student', id, `Menghapus siswa: ${target?.name || id}`);
+      this.notify();
+      return true;
+    }
+    return false;
+  }
+
   // --- Curriculum ---
   getOutcomes(): CurriculumOutcome[] {
     return getLocal<CurriculumOutcome[]>(STORAGE_KEYS.OUTCOMES, INITIAL_CURRICULUM_OUTCOMES);
